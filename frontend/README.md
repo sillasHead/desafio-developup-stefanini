@@ -1,41 +1,43 @@
-# Hackathon Stefanini
+# Projeto Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
+Após ler o enunciado disponível [aqui](../README.md "DESAFIO DEVELOP UP STEFANINI"), você poderá seguir este tutorial para ver os procedimentos necessários para rodar o projeto Frontend.
 
-## Development server
+Antes, verifique [nosso guia](https://developup.stefanini.com.br/git/developup/requisitos#desafio-develop-up-stefanini "Guia de Instalação dos programas necessários") para ver se você tem todos os requisitos para rodar o programa.
+Se você tiver alguma dúvida na instalação do ambiente abra uma [issue](https://developup.stefanini.com.br/git/developup/requisitos/-/issues "Issue para duvidas relacionados a configuração do ambiente")
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Rodando a aplicação Frontend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Você precisa rodar dois comandos no front para conseguir subir o projeto, o primeiro apenas a primeira vez.
+- instalação das Dependências
+```shell script
+npm install
+```
+- Linux
+```shell script
+npm start
+```
 
-## Build
+## Acessando o frontend
+O frontend vai rodar na porta padrão 4200
+- http://localhost:4200/
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Rodando os testes
+Para a realização dos testes fique atento a estrutura de onde cada Classe deve ficar. Além disso é necessário rodar o seguinte comando para rodar os testes.
+```shell script
+npm run test
+```
+### Estrutura do Projeto
+📦src\
+┣ 📂app\
+┃ ┣ 📂cadastro\
+┃ ┃ ┣ 📜cadastro.component.css\
+┃ ┃ ┣ 📜cadastro.component.html\
+┃ ┃ ┣ 📜cadastro.component.spec.ts\
+┃ ┃ ┗ 📜cadastro.component.ts\
+┃ ┣ 📂Objetos\
+┃ ┃ ┗ 📜pessoa.ts\
+┃ ┣ 📂service\
+┃ ┃ ┣ 📜cadastro.service.spec.ts\
+┃ ┃ ┗ 📜cadastro.service.ts\
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Comando para escutar o banco de dados Fake
-
-## Instalar Bootstrap e JQuery
- npm install bootstrap jquery
- 
-## Gerar Component
-ng g c nomeDoComponent
-
-## Comando para Rodar o servidor 
-ng serve
-
-## Comando para simular o banco de dados
-json-server --watch db.json

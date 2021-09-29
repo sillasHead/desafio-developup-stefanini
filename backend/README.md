@@ -1,60 +1,58 @@
-# desafio-java Project
+# Projeto Backend
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Após ler o enunciado disponível [aqui](../README.md "DESAFIO DEVELOP UP STEFANINI"), você poderá seguir este tutorial para ver os procedimentos necessários para rodar o projeto backend.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+Antes, verifique [nosso guia](https://developup.stefanini.com.br/git/developup/requisitos#desafio-develop-up-stefanini "Guia de Instalação dos programas necessários") para ver se você tem todos os requisitos para rodar o programa.
+Se você tiver alguma dúvida na instalação do ambiente abra uma [issue](https://developup.stefanini.com.br/git/developup/requisitos/-/issues "Issue para duvidas relacionados a configuração do ambiente").
 
-## Running the application in dev mode
 
-You can run your application in dev mode that enables live coding using:
+## Rodando a aplicação backend
+
+Você tem duas formas de rodar o programa: a primeira é usando o maven embutido no projeto da seguinte forma, lembrando que o terminal deve estar com a pasta aberta no backend, normalmente usando o comando cd backend.
+- Windows
+```shell script
+mvnw compile quarkus:dev
+```
+ - Linux
 ```shell script
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+> **_NOTE:_**  Para usar o maven do projeto as variáveis de ambiente deverão estar configuradas, exemplo JAVA_HOME
 
-## Packaging and running the application
+A outra forma é usando um maven externo do projeto ou fornecido pela sua IDE.
 
-The application can be packaged using:
+## Acessando a API
+
+Esta API expõe o swagger, que além de outras coisas serve como documentação para o desenvolvedor ver como e quais endpoints estão disponíveis, e poder testar a api sem depender do frontend.
+- http://localhost:8080/explorer/
+
+## Rodando os testes
+Para a realização dos testes fique atendo a estrutura de onde cada Classe deve ficar. Além disso é necessário rodar o seguinte comando para rodar os testes.
 ```shell script
-./mvnw package
+./mvnw test
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/desafio-java-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.html.
-
-## Related Guides
-
-- YAML Configuration ([guide](https://quarkus.io/guides/config#yaml)): Use YAML to configure your Quarkus application
-
-## Provided Code
-
-### YAML Config
-
-Configure your application with YAML
-
-[Related guide section...](https://quarkus.io/guides/config-reference#configuration-examples)
-
-The Quarkus application configuration is located in `src/main/resources/application.yml`.
+### Estrutura do Projeto
+📦src\
+┣ 📂main\
+┃ ┣ 📂java\
+┃ ┃ ┗ 📂br\
+┃ ┃ ┃ ┗ 📂com\
+┃ ┃ ┃ ┃ ┗ 📂stefanini\
+┃ ┃ ┃ ┃ ┃ ┣ 📂config\
+┃ ┃ ┃ ┃ ┃ ┣ 📂dao\
+┃ ┃ ┃ ┃ ┃ ┣ 📂dto\
+┃ ┃ ┃ ┃ ┃ ┣ 📂exceptions\
+┃ ┃ ┃ ┃ ┃ ┣ 📂models\
+┃ ┃ ┃ ┃ ┃ ┣ 📂rest\
+┃ ┃ ┃ ┃ ┃ ┣ 📂services\
+┃ ┗ 📂resources\
+┃ ┃ ┣ 📂scripts\
+┗ 📂test\
+┃ ┣ 📂java\
+┃ ┃ ┗ 📂br\
+┃ ┃ ┃ ┗ 📂com\
+┃ ┃ ┃ ┃ ┗ 📂stefanini\
+┃ ┗ 📂resources\
+┃ ┃ ┣ 📂schemas\
+┃ ┃ ┗ 📂scripts\
