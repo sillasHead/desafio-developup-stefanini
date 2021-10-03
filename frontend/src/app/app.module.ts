@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { CadastroService } from './service/cadastro.service';
 import { ListaProfissionalComponent } from './lista-profissional/lista-profissional.component';
+import { CadastroEquipeComponent } from './cadastro-equipe/cadastro-equipe.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ListaProfissionalComponent } from './lista-profissional/lista-profissio
     AppComponent,
     HomeComponent,
     CadastroComponent,
-    ListaProfissionalComponent
+    ListaProfissionalComponent,
+    CadastroEquipeComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@ export class ListaProfissionalComponent implements OnInit {
         this.carregarLoading  = true
         this.pessoas = p
       },2000)
-    }) 
+    })
   }
 
   associarCargo(cargo: number){
@@ -34,7 +34,7 @@ export class ListaProfissionalComponent implements OnInit {
         return "Analista de Sistemas Sr.";
     }
     return ''
-    
+
 }
 
   excluirItem = (id: any) =>{

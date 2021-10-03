@@ -39,7 +39,7 @@ export class CadastroComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
     this.activatedRoute.params.subscribe(parametros =>{
       if(parametros['id']){
         this.textoBotao = 'Editar'
@@ -57,7 +57,7 @@ export class CadastroComponent implements OnInit {
       success => this.navegar('listar'),
       error => console.log("Deu ruim"),
       () => console.log('Requisição completa'))
-      
+
   }
 
   navegar = (rota: any) =>{
