@@ -33,10 +33,14 @@ public class PessoaService {
         dao.inserir(pessoaDto);
     }
 
+    @Transactional(rollbackOn = Exception.class)
+    public void deletar(int id) {
+        dao.deletar(id);
+    }
 
     public List<Pessoa> listar() throws ErroNegocialException {
-        throw new ErroNegocialException(EnumMensagens.ERRO_SQL);
-//        return  dao.listar();
+        // throw new ErroNegocialException(EnumMensagens.ERRO_SQL);
+       return  dao.listar();
     }
 
     private void validar(Pessoa pessoaDto) throws NotFoundException{

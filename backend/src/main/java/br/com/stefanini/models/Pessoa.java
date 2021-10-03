@@ -19,6 +19,7 @@ import java.io.Serializable;
         @NamedNativeQuery(name="INSERIR_PESSOA", query = " INSERT INTO H2DB.pessoa (nome, sobrenome, contato, email, cargo) " +
                 "VALUES (:nome, :sobrenome, :contato, :email, :cargo) "),
         @NamedNativeQuery(name="LISTAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo from H2DB.pessoa ", resultClass = Pessoa.class),
+        @NamedNativeQuery(name="DELETAR_PESSOA", query = "delete from H2DB.pessoa where id = :id")
 })
 public class Pessoa implements Serializable{
     @Id

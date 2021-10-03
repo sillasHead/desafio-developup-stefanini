@@ -10,11 +10,7 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponse;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -31,6 +27,7 @@ import javax.ws.rs.core.Response;
 public class PessoaRest {
     @Inject
     PessoaService service;
+
     @POST
     @Operation(summary = "Insere uma pessoa",
             description = "Com os dados faz a validação e insereção na base de dados")
@@ -43,6 +40,21 @@ public class PessoaRest {
         service.inserir(pessoa);
         return  Response.status(Response.Status.CREATED).build();
     }
+
+    @DELETE
+    @Path(value = "{id}")
+    @Operation(summary = "Deletar Pessoa",
+            description = "Deleta uma pessoa")
+    @APIResponse(
+            responseCode = "200",
+            description = "Pessoa",
+            content = { @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Pessoa.class))})
+    public Response deletarPessoa(@PathParam(value = "id") int id) throws Exception {
+        service.deletar(id);
+        return Response.status(Response.Status.OK).build();
+    }
+
     @GET
     @Operation(summary = "Listar Pessoas",
             description = "Retorna uma lista de pessoas sem a necessidade de parametros")

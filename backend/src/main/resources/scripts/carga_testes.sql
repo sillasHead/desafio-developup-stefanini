@@ -25,4 +25,7 @@ alter table H2DB.pessoa
 
 alter table H2DB.pessoa modify id int auto_increment;
 
+insert into H2DB.pessoa values 
+(1, 'sillas', 'cavalcante', '983694726', 'sillas.ap16@gmail.com', 2);
 
+-- delete from H2DB.pessoa where id = 1;

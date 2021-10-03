@@ -37,6 +37,17 @@ public class PessoaDao {
         return query.executeUpdate();
     }
 
+    @Transactional
+    public int deletar(int id) {
+        String nameQuery = "DELETAR_PESSOA";
+
+        Query query = em
+                .createNamedQuery(nameQuery);
+                
+        query.setParameter("id", id);
+        return query.executeUpdate();
+    }
+
     public List<Pessoa> listar()  {
         String nameQuery = "LISTAR_PESSOA";
         TypedQuery<Pessoa> query = em
