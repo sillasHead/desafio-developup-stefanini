@@ -41,10 +41,25 @@ public class PessoaRest {
         return  Response.status(Response.Status.CREATED).build();
     }
 
+    @PUT
+    @Path(value = "{id}")
+    @Operation(summary = "Alterar pessoa",
+            description = "Altera os dados de uma pessoa pelo seu id")
+    @APIResponse(
+            responseCode = "200",
+            description = "Pessoa",
+            content = { @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Pessoa.class))})
+    public Response alterarPessoa(@PathParam(value = "id") int id, Pessoa pessoa) throws Exception {
+        pessoa.setId(id);
+        service.alterar(pessoa);
+        return Response.status(Response.Status.OK).build();
+    }
+
     @DELETE
     @Path(value = "{id}")
     @Operation(summary = "Deletar Pessoa",
-            description = "Deleta uma pessoa")
+            description = "Deleta uma pessoa pelo seu id")
     @APIResponse(
             responseCode = "200",
             description = "Pessoa",
@@ -53,6 +68,19 @@ public class PessoaRest {
     public Response deletarPessoa(@PathParam(value = "id") int id) throws Exception {
         service.deletar(id);
         return Response.status(Response.Status.OK).build();
+    }
+
+    @GET
+    @Path(value = "{id}")
+    @Operation(summary = "Buscar Pessoa",
+            description = "Busca os dados de uma pessoa pelo seu id")
+    @APIResponse(
+            responseCode = "200",
+            description = "Pessoa",
+            content = { @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Pessoa.class))})
+    public Response buscarPessoa(@PathParam(value = "id") int id) throws Exception {
+        return Response.status(Response.Status.OK).entity(service.buscar(id)).build();
     }
 
     @GET
