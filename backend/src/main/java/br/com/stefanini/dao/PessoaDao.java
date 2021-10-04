@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author danilo
- * @version 0.1.0
+ * @version 0.1.1
  * @email maratona@stefanini.com
  * @created 21/09/2021 on 07:13
  */
@@ -32,6 +32,9 @@ public class PessoaDao {
         query.setParameter("contato",pessoa.getContato());
         query.setParameter("email", pessoa.getEmail());
         query.setParameter("cargo", pessoa.getCargo());
+        if (pessoa.getEquipe() != null) { //TODO: ajustar
+            query.setParameter("equipe_id", pessoa.getEquipe().getId());
+        }
 
         return query.executeUpdate();
     }
@@ -48,6 +51,9 @@ public class PessoaDao {
         query.setParameter("contato",pessoa.getContato());
         query.setParameter("email", pessoa.getEmail());
         query.setParameter("cargo", pessoa.getCargo());
+        if (pessoa.getEquipe() != null) { //TODO: ajustar
+            query.setParameter("equipe_id", pessoa.getEquipe().getId());
+        }
 
         return query.executeUpdate();
     }

@@ -1,21 +1,19 @@
 package br.com.stefanini.services;
 
-import br.com.stefanini.dao.PessoaDao;
-import br.com.stefanini.exceptions.EnumMensagens;
-import br.com.stefanini.exceptions.ErroNegocialException;
-import br.com.stefanini.models.Pessoa;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import br.com.stefanini.dao.PessoaDao;
+import br.com.stefanini.exceptions.ErroNegocialException;
+import br.com.stefanini.models.Pessoa;
 
 /**
  * @author danilo
- * @version 0.1.0
+ * @version 0.1.1
  * @email maratona@stefanini.com
  * @created 21/09/2021 on 07:11
  */

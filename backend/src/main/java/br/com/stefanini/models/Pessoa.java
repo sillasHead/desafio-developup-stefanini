@@ -1,30 +1,33 @@
 package br.com.stefanini.models;
+
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 /**
  * @author danilo
- * @version 0.1.0
+ * @version 0.1.1
  * @email maratona@stefanini.com
  * @created 21/09/2021 on 06:35
  */
 @Entity
-@Table(name="pessoa", schema="H2DB")
+@Table(name = "pessoa", schema = "H2DB")
 @NamedNativeQueries({
-        @NamedNativeQuery(name="INSERIR_PESSOA", query = " INSERT INTO H2DB.pessoa (nome, sobrenome, contato, email, cargo) " +
-                "VALUES (:nome, :sobrenome, :contato, :email, :cargo) "),
-        @NamedNativeQuery(name="LISTAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo from H2DB.pessoa ", resultClass = Pessoa.class),
-        @NamedNativeQuery(name="ALTERAR_PESSOA", query = "update H2DB.pessoa " + 
-                "set nome = :nome, sobrenome = :sobrenome, contato = :contato, email = :email, cargo = :cargo where id = :id"),
-        @NamedNativeQuery(name="DELETAR_PESSOA", query = "delete from H2DB.pessoa where id = :id"),
-        @NamedNativeQuery(name="BUSCAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo from H2DB.pessoa where id = :id", resultClass = Pessoa.class)
-})
-public class Pessoa implements Serializable{
+        @NamedNativeQuery(name = "INSERIR_PESSOA", query = " INSERT intO H2DB.pessoa (nome, sobrenome, contato, email, cargo) "
+                + "VALUES (:nome, :sobrenome, :contato, :email, :cargo) "),
+        @NamedNativeQuery(name = "LISTAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo, equipe_id from H2DB.pessoa ", resultClass = Pessoa.class),
+        @NamedNativeQuery(name = "ALTERAR_PESSOA", query = "update H2DB.pessoa "
+                + "set nome = :nome, sobrenome = :sobrenome, contato = :contato, email = :email, cargo = :cargo, equipe_id = equipe_id where id = :id"),
+        @NamedNativeQuery(name = "DELETAR_PESSOA", query = "delete from H2DB.pessoa where id = :id"),
+        @NamedNativeQuery(name = "BUSCAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo, equipe_id from H2DB.pessoa where id = :id", resultClass = Pessoa.class) })
+public class Pessoa implements Serializable {
     @Id
     @Column(name = "id")
     private int id;
@@ -43,6 +46,10 @@ public class Pessoa implements Serializable{
 
     @Column(name = "cargo")
     private int cargo;
+
+    @ManyToOne
+    @JoinColumn(name = "equipe_id")
+    private Equipe equipe;
 
     public int getId() {
         return id;
@@ -90,5 +97,13 @@ public class Pessoa implements Serializable{
 
     public void setCargo(int cargo) {
         this.cargo = cargo;
+    }
+
+    public Equipe getEquipe() {
+        return equipe;
+    }
+
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 }
