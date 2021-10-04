@@ -1,1 +1,18 @@
-<p>cadastro-equipe works!</p>
+<form class="row g-3 needs-validation " [class.was-validated]="formInvalido" novalidate #f="ngForm"
+  (ngSubmit)="onSubmit(f)">
+
+  <div class="col-md-4">
+    <label for="nome" class="form-label">Nome</label>
+    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="equipe.nome" required #nome="ngModel">
+    <div class="valid-feedback">
+      Preenchimento válido
+    </div>
+    <div class="invalid-feedback">
+      Nome é obrigatório.
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">{{textoBotao}}</button>
+  </div>
+
+</form>

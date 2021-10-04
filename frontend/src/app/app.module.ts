@@ -10,6 +10,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { CadastroService } from './service/cadastro.service';
 import { ListaProfissionalComponent } from './lista-profissional/lista-profissional.component';
 import { CadastroEquipeComponent } from './cadastro-equipe/cadastro-equipe.component';
+import { ListaEquipesComponent } from './lista-equipes/lista-equipes.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CadastroEquipeComponent } from './cadastro-equipe/cadastro-equipe.compo
     HomeComponent,
     CadastroComponent,
     ListaProfissionalComponent,
-    CadastroEquipeComponent
+    CadastroEquipeComponent,
+    ListaEquipesComponent
   ],
   imports: [
     BrowserModule,
