@@ -1,5 +1,8 @@
 package br.com.stefanini.models;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author danilo
  * @version 0.1.1
@@ -25,5 +28,9 @@ public enum CargoEnum {
 
     public String getDescricao() {
         return descricao;
+    }
+
+    public List<CargoEnum> getCargos() {
+        return Arrays.asList(CargoEnum.values());
     }
 }
