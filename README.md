@@ -42,12 +42,12 @@ Observação:
 1) Não se preocupe em não entregar o projeto todo, mesmo que não termine tudo, envie o projeto 😊
 1) Ficou com dúvida? Mande um e-mail para <maratona@stefanini.com>
 
-
+</br></br></br>
 
 Considerações finais:
 
 Aqui estão meus agradecimentos à equipe da Stefanini, pela oportunidade de poder participar deste desafio e mostrar a minha capacidade como desenvolvedor!
 Meu primeiro contato com ambos os frameworks, Quarkus e Angular, foi meio complicadinho, mas... saiu alguma coisa haha
 
-LinkedIn -> https://www.linkedin.com/in/sillashead/
+LinkedIn -> https://www.linkedin.com/in/sillashead/ </br>
 GitHub -> https://github.com/sillasHead/
