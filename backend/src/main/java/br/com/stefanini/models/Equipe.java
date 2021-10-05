@@ -29,10 +29,17 @@ public class Equipe implements Serializable{
     @Id
     @Column(name = "id")
     private int id;
-
+    
     @Column(name = "nome")
     private String nome;
     
+    public Equipe(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public Equipe() {}
+
     public int getId() {
         return id;
     }
