@@ -1,13 +1,11 @@
 package br.com.stefanini.models;
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="equipe", schema="H2DB")
 @NamedNativeQueries({
-        @NamedNativeQuery(name="INSERIR_EQUIPE", query = " INSERT intO H2DB.equipe (nome) " +
+        @NamedNativeQuery(name="INSERIR_EQUIPE", query = " INSERT into H2DB.equipe (nome) " +
                 "VALUES (:nome) "),
         @NamedNativeQuery(name="LISTAR_EQUIPE", query = "select id, nome from H2DB.equipe ", resultClass = Equipe.class),
         @NamedNativeQuery(name="ALTERAR_EQUIPE", query = "update H2DB.equipe " + 

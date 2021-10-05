@@ -20,11 +20,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pessoa", schema = "H2DB")
 @NamedNativeQueries({
-        @NamedNativeQuery(name = "INSERIR_PESSOA", query = " INSERT intO H2DB.pessoa (nome, sobrenome, contato, email, cargo) "
-                + "VALUES (:nome, :sobrenome, :contato, :email, :cargo) "),
+        @NamedNativeQuery(name = "INSERIR_PESSOA", query = " INSERT intO H2DB.pessoa (nome, sobrenome, contato, email, cargo, equipe_id) "
+                + "VALUES (:nome, :sobrenome, :contato, :email, :cargo, :equipe_id) "),
         @NamedNativeQuery(name = "LISTAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo, equipe_id from H2DB.pessoa ", resultClass = Pessoa.class),
         @NamedNativeQuery(name = "ALTERAR_PESSOA", query = "update H2DB.pessoa "
-                + "set nome = :nome, sobrenome = :sobrenome, contato = :contato, email = :email, cargo = :cargo, equipe_id = equipe_id where id = :id"),
+                + "set nome = :nome, sobrenome = :sobrenome, contato = :contato, email = :email, cargo = :cargo, equipe_id = :equipe_id where id = :id"),
         @NamedNativeQuery(name = "DELETAR_PESSOA", query = "delete from H2DB.pessoa where id = :id"),
         @NamedNativeQuery(name = "BUSCAR_PESSOA", query = "select id, nome, sobrenome, contato, email, cargo, equipe_id from H2DB.pessoa where id = :id", resultClass = Pessoa.class) })
 public class Pessoa implements Serializable {

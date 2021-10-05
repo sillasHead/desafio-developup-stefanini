@@ -22,38 +22,32 @@ public class PessoaDao {
     EntityManager em;
 
     @Transactional
-    public int inserir(Pessoa pessoa)  {
+    public int inserir(Pessoa pessoa) {
         String nameQuery = "INSERIR_PESSOA";
-        Query query = em
-                .createNamedQuery(nameQuery);
+        Query query = em.createNamedQuery(nameQuery);
 
         query.setParameter("nome", pessoa.getNome());
-        query.setParameter("sobrenome",pessoa.getSobrenome());
-        query.setParameter("contato",pessoa.getContato());
+        query.setParameter("sobrenome", pessoa.getSobrenome());
+        query.setParameter("contato", pessoa.getContato());
         query.setParameter("email", pessoa.getEmail());
         query.setParameter("cargo", pessoa.getCargo());
-        if (pessoa.getEquipe() != null) { //TODO: ajustar
-            query.setParameter("equipe_id", pessoa.getEquipe().getId());
-        }
+        query.setParameter("equipe_id", pessoa.getEquipe());
 
         return query.executeUpdate();
     }
 
     @Transactional
-    public int alterar(Pessoa pessoa)  {
+    public int alterar(Pessoa pessoa) {
         String nameQuery = "ALTERAR_PESSOA";
-        Query query = em
-                .createNamedQuery(nameQuery);
+        Query query = em.createNamedQuery(nameQuery);
 
-        query.setParameter("id",pessoa.getId());
-        query.setParameter("nome",pessoa.getNome());
-        query.setParameter("sobrenome",pessoa.getSobrenome());
-        query.setParameter("contato",pessoa.getContato());
+        query.setParameter("id", pessoa.getId());
+        query.setParameter("nome", pessoa.getNome());
+        query.setParameter("sobrenome", pessoa.getSobrenome());
+        query.setParameter("contato", pessoa.getContato());
         query.setParameter("email", pessoa.getEmail());
         query.setParameter("cargo", pessoa.getCargo());
-        if (pessoa.getEquipe() != null) { //TODO: ajustar
-            query.setParameter("equipe_id", pessoa.getEquipe().getId());
-        }
+        query.setParameter("equipe_id", pessoa.getEquipe());
 
         return query.executeUpdate();
     }
@@ -61,23 +55,20 @@ public class PessoaDao {
     @Transactional
     public int deletar(int id) {
         String nameQuery = "DELETAR_PESSOA";
-        Query query = em
-                .createNamedQuery(nameQuery);
+        Query query = em.createNamedQuery(nameQuery);
         query.setParameter("id", id);
         return query.executeUpdate();
     }
 
-    public List<Pessoa> listar()  {
+    public List<Pessoa> listar() {
         String nameQuery = "LISTAR_PESSOA";
-        TypedQuery<Pessoa> query = em
-                .createNamedQuery(nameQuery, Pessoa.class);
+        TypedQuery<Pessoa> query = em.createNamedQuery(nameQuery, Pessoa.class);
         return query.getResultList();
     }
 
-    public Pessoa buscar(int id)  {
+    public Pessoa buscar(int id) {
         String nameQuery = "BUSCAR_PESSOA";
-        TypedQuery<Pessoa> query = em
-                .createNamedQuery(nameQuery, Pessoa.class);
+        TypedQuery<Pessoa> query = em.createNamedQuery(nameQuery, Pessoa.class);
         query.setParameter("id", id);
         return query.getSingleResult();
     }

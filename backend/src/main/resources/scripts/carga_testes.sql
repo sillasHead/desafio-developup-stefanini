@@ -28,8 +28,8 @@ create table H2DB.pessoa
     sobrenome varchar(255) not null,
     contato varchar(200) not null,
     email varchar(200) not null,
-    cargo int not null,
-    equipe_id int 
+    cargo int,
+    equipe_id int
 );
 
 create unique index pessoa_contato_uindex
