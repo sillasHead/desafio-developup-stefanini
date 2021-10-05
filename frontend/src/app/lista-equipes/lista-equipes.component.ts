@@ -35,7 +35,6 @@ export class ListaEquipesComponent implements OnInit {
   }
 
   editar = (id:any) =>{
-    console.log('entrou aqui ', id)
     this.router.navigate(['cadastro-equipe', id])
   }
 

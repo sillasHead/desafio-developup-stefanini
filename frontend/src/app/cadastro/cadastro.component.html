@@ -3,7 +3,7 @@
 
   <div class="col-md-4">
     <label for="nome" class="form-label">Nome</label>
-    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="pessoa.nome" required #nome="ngModel">
+    <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="pessoa.nome" required #nome="ngModel" [readOnly]="rotaId">
     <div class="valid-feedback">
       Preenchimento válido
     </div>
@@ -14,7 +14,7 @@
   <div class="col-md-4">
     <label for="sobrenome" class="form-label">Sobrenome</label>
     <input type="text" class="form-control" id="sobrenome" name="sobrenome" [(ngModel)]="pessoa.sobrenome" required
-      #sobrenome="ngModel">
+      #sobrenome="ngModel" [readOnly]="rotaId">
     <div class="valid-feedback">
       Preenchimento válido
     </div>
@@ -52,31 +52,27 @@
 
   <div class="col-md-3">
     <label for="cargo" class="form-label">Cargo</label>
-    <select class="form-select" id="cargo " [(ngModel)]="pessoa.cargo" [ngModelOptions]="{standalone: true}" required
+    <select class="form-select" id="cargo " [(ngModel)]="pessoa.cargo" [ngModelOptions]="{standalone: true}"
       #cargo="ngModel">
       <!-- <option selected>Selecione</option> -->
       <option *ngFor="let cargo of cargos" [ngValue]="cargo.id">
         {{cargo.nome}}
       </option>
     </select>
-
-    <div class="invalid-feedback">
-      Please select a valid state.
-    </div>
   </div>
 
   <div class="col-md-3">
     <label for="equipe" class="form-label">Equipe</label>
-    <select class="form-select" id="equipe " [(ngModel)]="pessoa.equipe" [ngModelOptions]="{standalone: true}" required
-      #equipe="ngModel">
+    <select class="form-select" id="equipe" [(ngModel)]="pessoa.equipe" [ngModelOptions]="{standalone: true}" required
+      #equipe="ngModel" [disabled]="rotaId">
       <!-- <option selected>Selecione</option> -->
-      <option *ngFor="let equipe of equipes" [ngValue]="equipe.id">
+      <option *ngFor="let equipe of equipes" [ngValue]="equipe" >
         {{equipe.nome}}
       </option>
     </select>
 
     <div class="invalid-feedback">
-      Please select a valid state.
+      Equipe é obrigatório.
     </div>
   </div>
   <div class="col-12">

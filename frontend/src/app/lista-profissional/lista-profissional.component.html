@@ -9,6 +9,7 @@
         <th scope="col">Email</th>
         <th scope="col">Contato</th>
         <th scope="col">Cargo</th>
+        <th scope="col">Equipe</th>
         <th scope="col">Editar</th>
         <th scope="col">Excluir</th>
       </tr>
@@ -20,7 +21,8 @@
         <td>{{p.sobrenome }}</td>
         <td>{{p.email }}</td>
         <td>{{p.contato }}</td>
-        <td>{{associarCargo(p.cargo)}}</td>
+        <td>{{associarCargo(p.cargo) }}</td>
+        <td>{{p.equipe != null ? p.equipe.nome : "" }}</td>
         <td> <button type="button" class="btn btn-warning" (click)="editar(p.id)" >Editar</button> </td>
         <td> <button type="button" class="btn btn-danger" (click)="excluirItem(p.id)" >Excluir</button> </td>
       </tr>
@@ -35,7 +37,7 @@
          <div class="bolas">
             <div></div>
             <div></div>
-            <div></div>                    
+            <div></div>
          </div>
       </div>
   </div>

@@ -20,6 +20,7 @@ export class CadastroService {
   }
 
   adicionar(p: Pessoa){
+    console.log("entrou aqui -> ", p)
     return this.$http.post(this.API, p)
   }
 

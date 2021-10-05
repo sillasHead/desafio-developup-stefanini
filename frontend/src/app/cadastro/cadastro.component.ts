@@ -31,12 +31,15 @@ export class CadastroComponent implements OnInit {
     }
   ]
   equipes: Array<Equipe> = []
+  rotaId: any
+  editavel: boolean = true
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private cadastroService: CadastroService,
-    private cadastroEquipeService: CadastroEquipeService
+    private cadastroEquipeService: CadastroEquipeService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +58,7 @@ export class CadastroComponent implements OnInit {
       this.equipes = e
     })
 
+    this.rotaId = this.route.snapshot.paramMap.get('id')
   }
 
 
