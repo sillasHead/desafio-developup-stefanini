@@ -27,12 +27,12 @@ public class EquipeService {
     @Transactional(rollbackOn = Exception.class)
     public void inserir(EquipeDto equipeDto) {
         this.validar(equipeDto);
-        dao.inserir(new Equipe(equipeDto.getId(), equipeDto.getNome()));
+        dao.inserir(convertDtoToModel(equipeDto));
     }
 
     @Transactional(rollbackOn = Exception.class)
     public void alterar(EquipeDto equipeDto) {
-        dao.alterar(new Equipe(equipeDto.getId(), equipeDto.getNome()));
+        dao.alterar(convertDtoToModel(equipeDto));
     }
 
     @Transactional(rollbackOn = Exception.class)
@@ -43,13 +43,12 @@ public class EquipeService {
     public List<EquipeDto> listar() throws ErroNegocialException {
         // throw new ErroNegocialException(EnumMensagens.ERRO_SQL);
         return dao.listar().stream()
-            .map(e -> new EquipeDto(e.getId(), e.getNome()))
+            .map(e -> convertModelToDto(e))
             .collect(Collectors.toList());
     }
 
     public EquipeDto buscar(int id) throws ErroNegocialException {
-        Equipe model = dao.buscar(id); 
-        return new EquipeDto(model.getId(), model.getNome());
+        return convertModelToDto(dao.buscar(id));
     }
 
     private void validar(EquipeDto equipeDto) throws NotFoundException {
@@ -59,5 +58,13 @@ public class EquipeService {
         if (equipeDto.getNome() == null) {
             throw new NotFoundException();
         }
+    }
+
+    private Equipe convertDtoToModel(EquipeDto equipeDto) {
+        return new Equipe(equipeDto.getId(), equipeDto.getNome());
+    }
+
+    private EquipeDto convertModelToDto(Equipe equipe) {
+        return new EquipeDto(equipe.getId(), equipe.getNome());
     }
 }

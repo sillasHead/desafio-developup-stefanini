@@ -1,5 +1,6 @@
 package br.com.stefanini.rest;
 
+import br.com.stefanini.dto.PessoaDto;
 import br.com.stefanini.exceptions.ErroNegocialException;
 import br.com.stefanini.models.Pessoa;
 import br.com.stefanini.services.PessoaService;
@@ -35,9 +36,9 @@ public class PessoaRest {
             responseCode = "201",
             description = "Pessoa",
             content = { @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Pessoa.class))})
-    public Response inserirPessoa(Pessoa pessoa) throws Exception {
-        service.inserir(pessoa);
+                    schema = @Schema(implementation = PessoaDto.class))})
+    public Response inserirPessoa(PessoaDto pessoaDto) throws Exception {
+        service.inserir(pessoaDto);
         return  Response.status(Response.Status.CREATED).build();
     }
 
@@ -49,10 +50,10 @@ public class PessoaRest {
             responseCode = "200",
             description = "Pessoa",
             content = { @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Pessoa.class))})
-    public Response alterarPessoa(@PathParam(value = "id") int id, Pessoa pessoa) throws Exception {
-        pessoa.setId(id);
-        service.alterar(pessoa);
+                    schema = @Schema(implementation = PessoaDto.class))})
+    public Response alterarPessoa(@PathParam(value = "id") int id, PessoaDto pessoaDto) throws Exception {
+        pessoaDto.setId(id);
+        service.alterar(pessoaDto);
         return Response.status(Response.Status.OK).build();
     }
 

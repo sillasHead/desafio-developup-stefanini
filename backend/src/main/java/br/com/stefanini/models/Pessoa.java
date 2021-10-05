@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * @author danilo
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  * @created 21/09/2021 on 06:35
  */
 @Entity
-@Table(name = "pessoa", schema = "H2DB")
+@Table(name = "pessoa", schema = "H2DB", uniqueConstraints = @UniqueConstraint(columnNames = { "contato", "email" }))
 @NamedNativeQueries({
         @NamedNativeQuery(name = "INSERIR_PESSOA", query = " INSERT intO H2DB.pessoa (nome, sobrenome, contato, email, cargo, equipe_id) "
                 + "VALUES (:nome, :sobrenome, :contato, :email, :cargo, :equipe_id) "),
@@ -50,6 +51,18 @@ public class Pessoa implements Serializable {
     @ManyToOne
     @JoinColumn(name = "equipe_id")
     private Equipe equipe;
+
+    public Pessoa(int id, String nome, String sobrenome, String contato, String email, int cargo, Equipe equipe) {
+        this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.contato = contato;
+        this.email = email;
+        this.cargo = cargo;
+        this.equipe = equipe;
+    }
+
+    public Pessoa() {}
 
     public int getId() {
         return id;

@@ -17,12 +17,14 @@ public class EquipeDto {
     @NotBlank(message = "Campo obrigatório")
     private String nome;
 
-    public EquipeDto(int id, String nome) {
+    public EquipeDto(int id,
+            @Size(max = 255, message = "Máximo de 255 caracteres") @NotBlank(message = "Campo obrigatório") String nome) {
         this.id = id;
         this.nome = nome;
     }
 
-    public EquipeDto() {}
+    public EquipeDto() {
+    }
 
     public int getId() {
         return id;
